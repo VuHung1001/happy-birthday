@@ -14,24 +14,24 @@
     <audio id="myAudio" autoplay loop volume="0.2">
       <source src="Chucmungsinhnhat-PhanDinhTung.mp3" type="audio/mpeg">
     </audio>    
+    <script id="script" src="script.js"></script>
     <script>
       // Thêm đoạn mã để lấy tên repository động và điều chỉnh lại đường dẫn
       const repoName = window.location.pathname.split('/')[1];
       if (repoName) {
           const audioElement = document.querySelector('#myAudio source');
-          audioElement.src = `/${repoName}/${audioElement.src}`;
+          audioElement.src = `/${repoName}/Chucmungsinhnhat-PhanDinhTung.mp3`;
 
           const faviconElement = document.querySelector('link[rel="shortcut icon"]');
-          faviconElement.href = `/${repoName}/${faviconElement.href}`;
+          faviconElement.href = `/${repoName}/balloon.png`;
 
           const styleElement = document.querySelector('link[rel="stylesheet"]');
-          styleElement.href = `/${repoName}/${styleElement.href}`;          
+          styleElement.href = `/${repoName}/style.css`;          
 
           const scriptElement = document.querySelector('#script');
-          scriptElement.src = `/${repoName}/${scriptElement.src}`;          
+          scriptElement.src = `/${repoName}/script.js`;          
       }
     </script>
-    <script id="script" src="script.js"></script>
     <script>
       document.addEventListener("click", function () {
           var audio = document.getElementById("myAudio");
