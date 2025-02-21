@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+    <title>Happy birthday</title>
+    <link rel="shortcut icon" type="image/jpg" href="/balloon.png"/>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+  </head>
+  <body>
+    <canvas id="c"></canvas>
+    <audio id="myAudio" autoplay loop volume="0.2">
+      <source src="/Chucmungsinhnhat-PhanDinhTung.mp3" type="audio/mpeg">
+    </audio>    
+    <script>
+      // Thêm đoạn mã để lấy tên repository động và điều chỉnh lại đường dẫn
+      const repoName = window.location.pathname.split('/')[1];
+      if (repoName) {
+          const audioElement = document.querySelector('#myAudio source');
+          audioElement.src = `/${repoName}/${audioElement.src}`;
+
+          const faviconElement = document.querySelector('link[rel="shortcut icon"]');
+          faviconElement.href = `/${repoName}/${faviconElement.href}`;
+
+          const styleElement = document.querySelector('link[rel="stylesheet"]');
+          styleElement.href = `/${repoName}/${styleElement.href}`;          
+
+          const scriptElement = document.querySelector('#script');
+          scriptElement.src = `/${repoName}/${scriptElement.src}`;          
+      }
+    </script>
+    <script id="script" src="script.js"></script>
+    <script>
+      document.addEventListener("click", function () {
+          var audio = document.getElementById("myAudio");
+          audio.play();
+          audio.volume = 0.2;
+      }, { once: true });
+      document.addEventListener("keypress", function () {
+          var audio = document.getElementById("myAudio");
+          audio.play();
+          audio.volume = 0.2;
+      }, { once: true });
+    </script>      
+    <div class="confetti-container"></div>
+
+    <script>
+// script.js
+const confettiContainer = document.querySelector('.confetti-container');
+
+// Số lượng pháo giấy cần tạo
+const confettiCount = 20;
+
+// Hàm tạo các mảnh pháo giấy
+function createConfetti() {
+    for (let i = 0; i < confettiCount; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+
+        // Gán màu ngẫu nhiên cho từng mảnh pháo giấy
+        const colors = ['#FF5733', '#33FF57', '#3357FF', '#FFD700', '#FF33FF'];
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+        // Gán vị trí ngẫu nhiên và tốc độ rơi cho từng mảnh pháo giấy
+        confetti.style.left = `${Math.random() * 100}vw`;
+        confetti.style.animationDuration = `${Math.random() * 1 + 1}s`;
+        confetti.style.animationDelay = `${Math.random() * 5}s`;
+
+        // Tốc độ xoay ngẫu nhiên
+        const randomSpin = Math.random() * 360 + 360; // Tốc độ xoay từ 360 đến 720 độ
+        const spinDirection = Math.random() < 0.5 ? 1 : -1; // Xoay theo chiều kim đồng hồ hoặc ngược
+        confetti.style.setProperty('--spin-speed', `${randomSpin * spinDirection}deg`);        
+
+        confettiContainer.appendChild(confetti);
+    }
+}
+
+// Gọi hàm tạo pháo giấy khi tải trang
+createConfetti();
+
+    </script>
+  </body>
+</html>
